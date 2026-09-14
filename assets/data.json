@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T13:24:08.511Z",
+  "generated_at": "2026-09-14T12:10:05.808Z",
   "historical_sales_weekly": [
     {
       "week_start_date": "2025-01-06",
@@ -8138,6 +8138,90 @@
       "city": "Other Germany",
       "purchase_frequency_per_month": 5.4,
       "preferred_channel": "Retail/Grocery"
+    }
+  ],
+  "survey_aggregates": {
+    "Students & Budget-Conscious": {
+      "sample_size": 135,
+      "average_monthly_beverage_spend_eur": 17.24,
+      "budget_under_20_eur_pct": 65.2
+    },
+    "Fitness & Gym-Goers": {
+      "sample_size": 83,
+      "average_monthly_beverage_spend_eur": 20.11,
+      "budget_under_20_eur_pct": 45.8
+    },
+    "On-the-go Commuters": {
+      "sample_size": 90,
+      "average_monthly_beverage_spend_eur": 19.97,
+      "budget_under_20_eur_pct": 52.2
+    },
+    "Urban Wellness Professionals": {
+      "sample_size": 112,
+      "average_monthly_beverage_spend_eur": 21.73,
+      "budget_under_20_eur_pct": 36.6
+    }
+  },
+  "customer_quotes": [
+    {
+      "segment": "Students & Budget-Conscious",
+      "sentiment": "positive",
+      "quote": "If it's on promo near the exam period I'll grab a pack, otherwise it's a stretch."
+    },
+    {
+      "segment": "Students & Budget-Conscious",
+      "sentiment": "negative",
+      "quote": "Honestly 2,50EUR for a can is a hard no on a student budget, whatever is inside it."
+    },
+    {
+      "segment": "Students & Budget-Conscious",
+      "sentiment": "mixed",
+      "quote": "I like the idea but I'd only buy it if my usual energy drink was sold out."
+    },
+    {
+      "segment": "Urban Wellness Professionals",
+      "sentiment": "positive",
+      "quote": "I switched most of my afternoon coffee runs to something like this, I don't mind paying more for clean ingredients."
+    },
+    {
+      "segment": "Urban Wellness Professionals",
+      "sentiment": "positive",
+      "quote": "The adaptogen angle is what gets me, not the caffeine."
+    },
+    {
+      "segment": "Urban Wellness Professionals",
+      "sentiment": "negative",
+      "quote": "Too many wellness brands taste like medicine, that's the real risk here, not the price."
+    },
+    {
+      "segment": "Fitness & Gym-Goers",
+      "sentiment": "positive",
+      "quote": "If it performs like VoltFit but tastes better I'm switching immediately."
+    },
+    {
+      "segment": "Fitness & Gym-Goers",
+      "sentiment": "mixed",
+      "quote": "I care about the caffeine source but I'm not going to overpay just for a nicer can."
+    },
+    {
+      "segment": "Fitness & Gym-Goers",
+      "sentiment": "negative",
+      "quote": "My gym already sells three energy drinks, it needs a real reason to take shelf space."
+    },
+    {
+      "segment": "On-the-go Commuters",
+      "sentiment": "positive",
+      "quote": "Grab and go is everything for me, if it's not at the kiosk near the station I'll never try it."
+    },
+    {
+      "segment": "On-the-go Commuters",
+      "sentiment": "mixed",
+      "quote": "I'd try it once out of curiosity, repeat purchase depends entirely on taste."
+    },
+    {
+      "segment": "On-the-go Commuters",
+      "sentiment": "negative",
+      "quote": "One more canned drink option at the kiosk doesn't move me, I buy on habit."
     }
   ],
   "price_sensitivity": {
