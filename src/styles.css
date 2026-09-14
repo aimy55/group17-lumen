@@ -110,3 +110,13 @@ input[type=range]:hover { filter:brightness(.92); }
 .read-guide { border-radius:4px; background:#FCFBF7; }
 @media (max-width:820px) { .hero { grid-template-columns:1fr; min-height:250px; } .hero > div:last-child { grid-column:auto; } .audience-layout { grid-template-columns:1fr; } .segment-area,.recommendation-panel { grid-column:auto; } .launch-strip { grid-template-columns:1fr; } .launch-copy,.city-opportunities { grid-column:auto; } .scenario-grid,.audit-grid { grid-template-columns:1fr; } .scenario-grid > div,.audit-grid > article { grid-column:auto; } }
 @media (max-width:590px) { .shell { padding:16px 14px 44px; } .hero { min-height:230px; padding:28px 22px; } .brand-lockup { top:23px; left:22px; align-items:center; flex-direction:row; gap:8px; } .product-badge { min-height:22px; font-size:8px; } .tabs { gap:4px; border-radius:16px; } .tabs button { min-height:34px; padding:7px 12px; } }
+
+/* Keep the product descriptor on the same line as the LUMEN wordmark. */
+.wordmark { display:flex; align-items:center; gap:12px; }
+
+/* Replace the decorative ring with the LUMEN product visual. */
+.hero::after { display:none; }
+.hero::before { content:""; position:absolute; z-index:0; right:clamp(24px,8vw,110px); top:50%; width:240px; height:370px; transform:translateY(-50%); background:url('../assets/lumen-bottle.png') center / contain no-repeat; filter:drop-shadow(0 18px 18px rgba(0,0,0,.2)); }
+
+@media (max-width:820px) { .hero::before { right:24px; width:190px; height:300px; } }
+@media (max-width:590px) { .hero::before { right:12px; width:125px; height:205px; } }
