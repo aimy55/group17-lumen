@@ -34,9 +34,9 @@ const round = (value, places = 2) => value == null || Number.isNaN(value) ? null
 const readCsv = async name => parseCsv(await readFile(join(dataDir, name), 'utf8'));
 const toNumbers = (row, keys) => Object.fromEntries(Object.entries(row).map(([key, value]) => [key, keys.includes(key) ? number(value) : value]));
 
-const [market, economics, survey, sensitivity, tests, sales] = await Promise.all([
+const [market, economics, survey, sensitivity, tests, sales, quotes] = await Promise.all([
   readCsv('market_context.csv'), readCsv('channel_economics.csv'), readCsv('customer_survey.csv'),
-  readCsv('price_sensitivity_survey.csv'), readCsv('price_test_results.csv'), readCsv('historical_sales_weekly.csv'),
+  readCsv('price_sensitivity_survey.csv'), readCsv('price_test_results.csv'), readCsv('historical_sales_weekly.csv'), readCsv('customer_quotes.csv'),
 ]);
 
 const dataQuality = [];
@@ -56,6 +56,10 @@ else dataQuality.push({ type: 'duplicate_rows_removed', source: 'historical_sale
 const cleanSurvey = survey.map(row => ({
   segment: row.segment, city: row.city,
   purchase_frequency_per_month: number(row.purchase_frequency_per_month), preferred_channel: row.preferred_channel,
+}));
+const surveyAggregates = Object.fromEntries([...new Set(survey.map(row => row.segment))].map(segment => {
+  const rows = survey.filter(row => row.segment === segment);
+  return [segment, { sample_size: rows.length, average_monthly_beverage_spend_eur: round(rows.reduce((sum, row) => sum + number(row.monthly_beverage_spend_eur), 0) / rows.length), budget_under_20_eur_pct: round(100 * rows.filter(row => number(row.monthly_beverage_spend_eur) < 20).length / rows.length, 1) }];
 }));
 const segments = [...new Set(sensitivity.map(row => row.segment))].sort();
 const priceSensitivityBySegment = Object.fromEntries(segments.map(segment => {
@@ -113,6 +117,8 @@ const output = {
   generated_at: new Date().toISOString(),
   historical_sales_weekly: cleanSales,
   customer_survey: cleanSurvey,
+  survey_aggregates: surveyAggregates,
+  customer_quotes: quotes.map(({ segment, sentiment, quote }) => ({ segment, sentiment, quote })),
   price_sensitivity: { by_segment: priceSensitivityBySegment, blended: blendedPriceSensitivity, segment_shares: Object.fromEntries(Object.entries(segmentShares).map(([key, value]) => [key, round(value, 3)])) },
   channel_economics: channelEconomics,
   payback_months: payback,
